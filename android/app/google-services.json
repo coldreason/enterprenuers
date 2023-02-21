@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1074217400307",
+    "project_id": "enterprenuers",
+    "storage_bucket": "enterprenuers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074217400307:android:3ae111981fb4be73524486",
+        "android_client_info": {
+          "package_name": "com.example.generative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074217400307-bnjrmmrptmbjcrb49lte7jlsml3olgro.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0sQfgwPOjKRniUpTbRrVvEn6OwqsHT9c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074217400307-bnjrmmrptmbjcrb49lte7jlsml3olgro.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
