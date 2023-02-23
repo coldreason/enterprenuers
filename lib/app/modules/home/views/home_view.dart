@@ -68,7 +68,7 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
                 width: double.infinity,
-                height: 600,
+                height: 700,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
