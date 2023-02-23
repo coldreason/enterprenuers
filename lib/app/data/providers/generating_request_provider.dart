@@ -22,6 +22,5 @@ class GeneratingRequestProvider {
 
   void addQueue(String newRequestId) {
     DocumentReference<Object?> documentReference = requestQueueRef.doc(newRequestId);
-    documentReference.set({"id":newRequestId});
   }
 }

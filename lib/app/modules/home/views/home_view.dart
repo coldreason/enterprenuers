@@ -65,7 +65,7 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
                 width: double.infinity,
-                height: 700,
+                height: 1200,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: SingleChildScrollView(
@@ -165,11 +165,18 @@ class HomeView extends GetView<HomeController> {
                             ),
                           ),
                         ),
-                        controller.focus == ""?Container():Container(
-                          height: 200,color: Colors.white,
+                        controller.focus == ""?Container(
+                          height: 400,color: Colors.white,
+                          child: ImageNetwork(
+                            image: 'https://firebasestorage.googleapis.com/v0/b/enterprenuers.appspot.com/o/80c251ffaad1234b9360019dc8ed249f5c32ec4341479024f976fa6fc84a6eae8e388f84d9bdf648de42e80087f3c063d0cbfcf6b74f01f8bf901e82424913ba34207fa0674180b4bde388b8e2e2ba87639b6c7e2186ab41c32fd50b9b7ffe945ec68b258fcaa26991809b.jpg?alt=media&token=fb85d293-3dcc-4823-bdc5-53b856187cac',
+                            height: 440,
+                            width: 200,
+                          ),
+                        ):Container(
+                          height: 400,color: Colors.white,
                           child: ImageNetwork(
                             image: controller.focus,
-                            height: 200,
+                            height: 400,
                             width: 120,
                           ),
                         )
