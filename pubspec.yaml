@@ -10,6 +10,13 @@ dependencies:
   get: 4.6.5
   video_player: 2.5.1
   glassmorphism: 3.0.0
+  firebase_core: 2.7.0
+  cloud_firestore: 4.4.3
+  firebase_storage: 11.0.14
+  selectable_container: 1.0.7
+  image_network: 2.5.1
+  file_picker: 5.2.5
+  image_picker: 0.8.6+3
   flutter: 
     sdk: flutter
 
