@@ -1,3 +1,4 @@
+import 'package:generative/app/data/providers/generating_request_provider.dart';
 import 'package:generative/app/data/providers/pre_tuned_model_provider.dart';
 import 'package:generative/app/modules/home/repositories/home_repository.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,7 @@ class HomeBinding extends Bindings {
     Get.lazyPut<HomeController>(
       () => HomeController(
           homeRepository:
-              HomeRepository(preTunedModelProvider: PreTunedModelProvider())),
+              HomeRepository(preTunedModelProvider: PreTunedModelProvider(), generatingRequestProvider: GeneratingRequestProvider())),
     );
   }
 }

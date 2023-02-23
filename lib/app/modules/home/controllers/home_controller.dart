@@ -1,6 +1,7 @@
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:generative/app/data/models/generating_request_model.dart';
 import 'package:generative/app/data/models/pre_tuned_model_model.dart';
 import 'package:generative/app/modules/home/repositories/home_repository.dart';
+import 'package:generative/app/service/storage_upload.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:video_player/video_player.dart';
@@ -11,6 +12,7 @@ class HomeController extends GetxController {
   bool videoReady = false;
   late VideoPlayerController videoPlayerController;
   List<PreTunedModel> models = [];
+  String focus = "";
   int selected = 0;
   XFile? poze;
 
@@ -53,7 +55,13 @@ class HomeController extends GetxController {
   void pickImage()async{
     final ImagePicker _picker = ImagePicker();
     poze =  await _picker.pickImage(source: ImageSource.gallery);
-    print(poze!.path);
     update();
+  }
+
+  void generate()async{
+    if(poze !=null){
+      String pozeLink = await storageUpload(poze!);
+      homeRepository.sendRequest(GeneratingRequest(poze: pozeLink,request: "",model: models[selected].id!,finish: false));
+    }
   }
 }
