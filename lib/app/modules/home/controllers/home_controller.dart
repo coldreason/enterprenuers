@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:generative/app/data/models/generating_request_model.dart';
 import 'package:generative/app/data/models/pre_tuned_model_model.dart';
 import 'package:generative/app/modules/home/repositories/home_repository.dart';
 import 'package:generative/app/service/storage_upload.dart';
+import 'package:generative/constants.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:video_player/video_player.dart';
@@ -15,6 +18,7 @@ class HomeController extends GetxController {
   String focus = "";
   int selected = 0;
   XFile? poze;
+  TextEditingController requestController = TextEditingController();
 
   HomeController({required this.homeRepository});
 
@@ -40,6 +44,8 @@ class HomeController extends GetxController {
     super.onReady();
   }
 
+
+
   @override
   void onClose() {
     super.onClose();
@@ -59,9 +65,22 @@ class HomeController extends GetxController {
   }
 
   void generate()async{
-    if(poze !=null){
+    if(poze !=null && requestController.value.text!=""){
       String pozeLink = await storageUpload(poze!);
-      homeRepository.sendRequest(GeneratingRequest(poze: pozeLink,request: "",model: models[selected].id!,finish: false));
+      DocumentReference<Object?> ref = await homeRepository.sendRequest(GeneratingRequest(poze: pozeLink,request: requestController.value.text,model: models[selected].id!,finish: false));
+      requestController.clear();
+
+      ref.snapshots().listen((querySnapshot) async{
+        print(querySnapshot.data());
+        Map<String,dynamic> ret = querySnapshot.data()! as Map<String,dynamic>;
+        GeneratingRequest k = GeneratingRequest.fromJson(ret);
+        if (k.finish!)
+          {focus = await storageDownload(k.model!);
+          print(focus);}
+        update();
+      });
     }
   }
+
+
 }

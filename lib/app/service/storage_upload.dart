@@ -5,6 +5,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 
+Future<String> storageDownload(String imageName)async{
+  final storageRef = FirebaseStorage.instance.ref();
+  final String imageUrl =
+      await storageRef.child("generateImage/"+imageName).getDownloadURL();
+  return imageUrl;
+}
+
 Future<String> storageUpload(XFile file)async{
   final storageRef = FirebaseStorage.instance.ref();
   Reference _reference = storageRef.child("pozes/"+getRandomString(15));

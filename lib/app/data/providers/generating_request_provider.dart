@@ -13,14 +13,16 @@ class GeneratingRequestProvider {
   @override
   void onInit() {}
 
-  void sendRequest(GeneratingRequest generatingRequest) {
+  Future<DocumentReference> sendRequest(GeneratingRequest generatingRequest) async{
     DocumentReference<Object?> documentReference = requestRef.doc();
     generatingRequest.id = documentReference.id;
     documentReference.set(generatingRequest.toJson());
     addQueue(generatingRequest.id!);
+    return await documentReference;
   }
 
   void addQueue(String newRequestId) {
     DocumentReference<Object?> documentReference = requestQueueRef.doc(newRequestId);
+    documentReference.set({"id":newRequestId,"createTime":Timestamp.now()});
   }
 }

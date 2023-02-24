@@ -1,0 +1,17 @@
+{
+  "message": {
+    "result": {
+      "srcLangType": "ko",
+      "tarLangType": "en",
+      "translatedText": "Nice to meet you.",
+      "engineType": "PRETRANS",
+      "pivot": null,
+      "dict": null,
+      "tarDict": null,
+      "modelVer": "Unknown"
+    },
+    "@type": "response",
+    "@service": "naverservice.nmt.proxy",
+    "@version": "1.0.0"
+  }
+}
