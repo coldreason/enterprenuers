@@ -69,14 +69,17 @@ class HomeController extends GetxController {
       String pozeLink = await storageUpload(poze!);
       DocumentReference<Object?> ref = await homeRepository.sendRequest(GeneratingRequest(poze: pozeLink,request: requestController.value.text,model: models[selected].id!,finish: false));
       requestController.clear();
+      focus = '';
 
       ref.snapshots().listen((querySnapshot) async{
         print(querySnapshot.data());
         Map<String,dynamic> ret = querySnapshot.data()! as Map<String,dynamic>;
         GeneratingRequest k = GeneratingRequest.fromJson(ret);
         if (k.finish!)
-          {focus = await storageDownload(k.model!);
-          print(focus);}
+          {focus = await storageDownload(k.id!);
+          print(focus);
+          print('focus updated');
+          }
         update();
       });
     }
