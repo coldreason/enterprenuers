@@ -263,18 +263,15 @@ class HomeView extends GetView<HomeController> {
             Center(
               child: GetBuilder<HomeController>(
                 builder: (context) {
+                  print(controller.focus);
                   return Container(
                     height: 400,
                     width: 300,
                     color: Colors.white,
                     padding: EdgeInsets.all(10),
                     child: (controller.focus == "")
-                        ? ImageNetwork(
-                          image:
-                              'https://firebasestorage.googleapis.com/v0/b/enterprenuers.appspot.com/o/80c251ffaad1234b9360019dc8ed249f5c32ec4341479024f976fa6fc84a6eae8e388f84d9bdf648de42e80087f3c063d0cbfcf6b74f01f8bf901e82424913ba34207fa0674180b4bde388b8e2e2ba87639b6c7e2186ab41c32fd50b9b7ffe945ec68b258fcaa26991809b.jpg?alt=media&token=fb85d293-3dcc-4823-bdc5-53b856187cac',
-                          height: 380,
-                          width: 280,
-                        )
+                        ? Container(height: 380,width: 280,
+                    color: Colors.white,)
                         : ImageNetwork(
                           image: controller.focus,
                           height: 380,
